@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0D0812">
+  <meta name="description" content="有些放在心里很久的话，想认真地说给你听。这是一封关于喜欢、珍惜与尊重的心里话。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="给你的心里话">
+  <meta property="og:description" content="有些放在心里很久的话，想认真地说给你听。">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="给你的心里话">
+  <meta name="twitter:description" content="有些放在心里很久的话，想认真地说给你听。">
+  <title>给你的心里话</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    html {
+      background: #0D0812;
+      color: #FFF7F2;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .experience {
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip-path: inset(50%) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .skip-link {
+      position: fixed;
+      inset-block-start: 0.75rem;
+      inset-inline-start: 0.75rem;
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      background: #FFF7F2;
+      color: #0D0812;
+      transform: translateY(-200%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :where(a, button):focus-visible {
+      outline: 3px solid #E7C98F;
+      outline-offset: 4px;
+    }
+
+    #music-toggle {
+      position: fixed;
+      inset-block-start: max(1rem, env(safe-area-inset-top));
+      inset-inline-end: max(1rem, env(safe-area-inset-right));
+      z-index: 20;
+    }
+  </style>
+  <script src="./js/content.js" defer></script>
+  <script src="./js/ambient.js" defer></script>
+  <script src="./js/audio.js" defer></script>
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#experience">跳至主要内容</a>
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <p class="site-header__note">一封认真写给你的信</p>
+    <div class="site-controls" role="group" aria-label="音乐与动效控制">
+      <button id="music-toggle" class="music-toggle" type="button" aria-label="播放背景音乐《今天你要嫁给我》" aria-describedby="music-hint">播放音乐</button>
+      <button id="motion-toggle" class="motion-toggle" type="button" aria-label="暂停持续动效" aria-controls="ambient-canvas ring-scene">暂停动效</button>
+      <audio id="music" src="./assets/audio/background.mp3" preload="auto"></audio>
+    </div>
+    <p id="music-hint" class="music-hint" role="status" aria-live="polite" aria-atomic="true">背景音乐是《今天你要嫁给我》。若浏览器阻止自动播放，请点“播放音乐”；音乐不会循环播放。</p>
+    <a id="music-official" class="music-official" href="https://www.kugou.com/song-36/70y3b7.html?from_360" target="_blank" rel="noopener noreferrer">去官方平台收听《今天你要嫁给我》<span class="visually-hidden">（在新窗口打开）</span></a>
+  </header>
+
+  <main id="experience" class="experience" tabindex="-1">
+    <h1 class="experience__title">给你的心里话</h1>
+    <p id="recipient-greeting" class="experience__recipient">致珍贵的你</p>
+
+    <section id="scene-copy" class="scene scene-copy" data-scene="opening" aria-labelledby="scene-title" aria-live="polite">
+      <svg class="scene-copy__heart" viewBox="0 0 96 88" aria-hidden="true">
+        <path d="M48 82C39 73 9 53 5 31 1 10 25-3 38 10c5 5 8 11 10 16 2-5 5-11 10-16C71-3 95 10 91 31c-4 22-34 42-43 51Z" fill="currentColor"/>
+        <path d="M17 20c5-9 15-10 21-4" fill="none" stroke="#FFF7F2" stroke-linecap="round" stroke-width="4" opacity=".55"/>
+      </svg>
+      <p class="scene-copy__eyebrow">第一幕 · 想认真告诉你</p>
+      <h2 id="scene-title" class="scene-copy__title">有些喜欢，想认真说给你听</h2>
+      <div class="scene-copy__body">
+        <p>有些放在心里很久的话，今天不想再用玩笑带过去。我想认真地说给你听。不用赶，慢慢看。</p>
+      </div>
+      <button id="next-scene" class="scene-copy__next" type="button">继续</button>
+    </section>
+
+    <section id="ring-scene" class="scene ring-scene" data-scene="ring" aria-labelledby="ring-title" aria-live="polite" hidden>
+      <p class="ring-scene__eyebrow">一份小小的心意</p>
+      <h2 id="ring-title" class="ring-scene__title">把这份心意郑重地交给你</h2>
+      <p class="ring-scene__intro">所以，今天想用一点小小的仪式感，把这份心意郑重地交给你。</p>
+      <button id="open-ring" class="ring-scene__open" type="button" aria-controls="ring-box" aria-expanded="false">打开这份心意</button>
+
+      <div id="ring-box" class="ring-box">
+        <div class="ring-box__stage">
+          <div class="ring-box__glow" aria-hidden="true"></div>
+          <div class="ring-box__lid" aria-hidden="true">
+            <div class="ring-box__lid-top">
+              <div class="ring-box__lid-lining">
+                <span class="ring-box__monogram">♡</span>
+              </div>
+            </div>
+          </div>
+          <div class="ring-box__hinge" aria-hidden="true"></div>
+          <div class="ring-box__base" aria-hidden="true">
+            <div class="ring-box__base-rim">
+              <div class="ring-box__cushion">
+                <span class="ring-box__cushion-seam ring-box__cushion-seam--left"></span>
+                <span class="ring-box__cushion-seam ring-box__cushion-seam--right"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ring-box__jewel" aria-hidden="true">
+            <svg class="ring" role="img" viewBox="0 0 320 300" aria-labelledby="ring-svg-title">
+              <title id="ring-svg-title">香槟金双层椭圆戒圈托起圆形多切面主石，配有收窄戒托、四爪镶与一颗星芒的精致戒指</title>
+              <defs>
+                <linearGradient id="ring-metal" x1="70" y1="110" x2="245" y2="260" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#8A5B25"/>
+                  <stop offset=".18" stop-color="#F9E8B5"/>
+                  <stop offset=".38" stop-color="#C18A3E"/>
+                  <stop offset=".58" stop-color="#FFF3C9"/>
+                  <stop offset=".78" stop-color="#B5782E"/>
+                  <stop offset="1" stop-color="#E7C98F"/>
+                </linearGradient>
+                <linearGradient id="ring-metal-highlight" x1="105" y1="115" x2="211" y2="270" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#FFF8DC"/>
+                  <stop offset=".28" stop-color="#D3A453"/>
+                  <stop offset=".52" stop-color="#FFF0B5"/>
+                  <stop offset=".75" stop-color="#A96C29"/>
+                  <stop offset="1" stop-color="#F4D99D"/>
+                </linearGradient>
+                <linearGradient id="ring-setting" x1="116" y1="77" x2="201" y2="127" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#A36B2B"/>
+                  <stop offset=".35" stop-color="#FFF1BD"/>
+                  <stop offset=".62" stop-color="#D5A654"/>
+                  <stop offset="1" stop-color="#7E4E20"/>
+                </linearGradient>
+                <radialGradient id="ring-gem" cx="0" cy="0" r="1" gradientTransform="translate(146 52) rotate(49) scale(70)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#FFFFFF"/>
+                  <stop offset=".3" stop-color="#FFF7F2"/>
+                  <stop offset=".58" stop-color="#F4D8E4"/>
+                  <stop offset=".82" stop-color="#D8C8E8"/>
+                  <stop offset="1" stop-color="#A990B8"/>
+                </radialGradient>
+                <linearGradient id="ring-facet-light" x1="135" y1="40" x2="183" y2="103" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFFFFF" stop-opacity=".96"/>
+                  <stop offset="1" stop-color="#EBC9DB" stop-opacity=".5"/>
+                </linearGradient>
+                <linearGradient id="ring-facet-shadow" x1="123" y1="51" x2="199" y2="91" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#BDA5CE" stop-opacity=".7"/>
+                  <stop offset="1" stop-color="#FFF7F2" stop-opacity=".78"/>
+                </linearGradient>
+                <linearGradient id="ring-star" x1="187" y1="12" x2="221" y2="49" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFFFFF"/>
+                  <stop offset=".5" stop-color="#FFF3C9"/>
+                  <stop offset="1" stop-color="#E7C98F"/>
+                </linearGradient>
+                <clipPath id="ring-gem-clip">
+                  <circle cx="160" cy="72" r="44"/>
+                </clipPath>
+              </defs>
+
+              <circle class="ring__halo" cx="160" cy="75" r="61" fill="none" stroke="#F4A7C3" stroke-opacity=".22" stroke-width="2"/>
+
+              <g class="ring__band">
+                <ellipse class="ring__band-outer" cx="160" cy="190" rx="70" ry="82" fill="none" stroke="url(#ring-metal)" stroke-width="18"/>
+                <ellipse class="ring__band-inner" cx="160" cy="190" rx="70" ry="82" fill="none" stroke="url(#ring-metal-highlight)" stroke-width="9"/>
+                <path class="ring__band-highlight" d="M100 153c8-24 23-38 38-43M216 208c-5 24-18 43-35 53" fill="none" stroke="#FFF3C9" stroke-linecap="round" stroke-width="3" opacity=".72"/>
+              </g>
+
+              <g class="ring__shoulders" fill="url(#ring-setting)">
+                <path class="ring__shoulder ring__shoulder--left" d="M101 151c7-22 20-40 39-51l10 13c-17 10-28 25-34 45Z"/>
+                <path class="ring__shoulder ring__shoulder--right" d="M219 151c-7-22-20-40-39-51l-10 13c17 10 28 25 34 45Z"/>
+              </g>
+
+              <g class="ring__setting">
+                <ellipse class="ring__basket" cx="160" cy="111" rx="47" ry="16" fill="none" stroke="url(#ring-setting)" stroke-width="7"/>
+                <path class="ring__basket-support" d="M125 105l13 25m57-25-13 25m-39-16h34" fill="none" stroke="url(#ring-setting)" stroke-linecap="round" stroke-width="6"/>
+              </g>
+
+              <g class="ring__stone">
+                <circle class="ring__stone-base" cx="160" cy="72" r="44" fill="url(#ring-gem)" stroke="#FFF7F2" stroke-width="2"/>
+                <g class="ring__facets" clip-path="url(#ring-gem-clip)" stroke="#FFF7F2" stroke-opacity=".62" stroke-width=".8">
+                  <polygon class="ring__facet ring__facet--light" points="160,28 129,41 145,57 160,51" fill="url(#ring-facet-light)"/>
+                  <polygon class="ring__facet ring__facet--rose" points="129,41 116,72 139,72 145,57" fill="#E7C3D7" fill-opacity=".7"/>
+                  <polygon class="ring__facet ring__facet--shadow" points="116,72 129,103 145,87 139,72" fill="url(#ring-facet-shadow)"/>
+                  <polygon class="ring__facet ring__facet--light" points="129,103 160,116 160,93 145,87" fill="#FFF7F2" fill-opacity=".76"/>
+                  <polygon class="ring__facet ring__facet--rose" points="160,116 191,103 175,87 160,93" fill="#D9B7CF" fill-opacity=".66"/>
+                  <polygon class="ring__facet ring__facet--shadow" points="191,103 204,72 181,72 175,87" fill="url(#ring-facet-shadow)"/>
+                  <polygon class="ring__facet ring__facet--light" points="204,72 191,41 175,57 181,72" fill="#FFFFFF" fill-opacity=".8"/>
+                  <polygon class="ring__facet ring__facet--rose" points="191,41 160,28 160,51 175,57" fill="#E7D7EF" fill-opacity=".78"/>
+                  <polygon class="ring__table" points="160,51 175,57 181,72 175,87 160,93 145,87 139,72 145,57" fill="url(#ring-facet-light)"/>
+                  <path class="ring__facet-lines" d="M160 51l-10 25 10 17 11-17-11-19Zm-21 21 22 4 20-4m-36 15 15-11 15 11m-45-54 15 16 15-6 15 6 16-16M116 72l23 0m42 0h23m-75 31 16-16m30 0 16 16m-31 13v-13" fill="none"/>
+                </g>
+                <ellipse class="ring__stone-glint" cx="145" cy="48" rx="10" ry="5" transform="rotate(-28 145 48)" fill="#FFFFFF" opacity=".7"/>
+              </g>
+
+              <g class="ring__prongs" fill="url(#ring-setting)" stroke="#FFF0B5" stroke-width=".7">
+                <path class="ring__prong ring__prong--left" d="M120 105c-8-12-10-28-4-42 2-5 9-3 8 3-4 13-2 25 5 35Z"/>
+                <path class="ring__prong ring__prong--right" d="M200 105c8-12 10-28 4-42-2-5-9-3-8 3 4 13 2 25-5 35Z"/>
+                <path class="ring__prong ring__prong--top-left" d="M132 45c-5-7-4-15 2-20 4-3 8 2 5 6-3 4-3 8 0 12Z"/>
+                <path class="ring__prong ring__prong--top-right" d="M188 45c5-7 4-15-2-20-4-3-8 2-5 6 3 4 3 8 0 12Z"/>
+                <circle cx="121" cy="62" r="4"/>
+                <circle cx="199" cy="62" r="4"/>
+                <circle cx="135" cy="29" r="3.5"/>
+                <circle cx="185" cy="29" r="3.5"/>
+              </g>
+
+              <path class="ring__star" d="M207 10l4 16 16 4-16 4-4 16-4-16-16-4 16-4Z" fill="url(#ring-star)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="response-scene" class="scene response-scene" data-scene="response" aria-labelledby="response-title" hidden>
+      <p class="response-scene__ring-copy">这枚戒指，不急着替未来下定义，也不要求你用答案交换。它只代表：我对你的喜欢是认真的，而你的选择，同样重要。</p>
+      <h2 id="response-title" class="response-scene__title"><span class="response-scene__like">我喜欢你。</span>你愿意做我女朋友吗？</h2>
+      <p class="response-scene__assurance">如果愿意，我们就认真开始；如果还没准备好，也不必勉强自己。</p>
+      <div class="response-scene__choices" role="group" aria-label="你的回应">
+        <button id="accept" class="response-scene__accept" type="button">我愿意</button>
+        <button id="decline" class="response-scene__decline" type="button">不愿意</button>
+      </div>
+    </section>
+
+    <section id="accepted-scene" class="scene accepted-scene" data-scene="accepted" aria-labelledby="accepted-title" hidden>
+      <p class="accepted-scene__eyebrow">今天，值得记住</p>
+      <h2 id="accepted-title" class="accepted-scene__title">那就，从今天开始吧。</h2>
+      <p>谢谢你愿意回应我的喜欢。今天不是故事的结尾，而是我们认真了解彼此、一起创造回忆的开始。</p>
+      <p class="accepted-scene__date-line">我们认真开始的日子：<time id="accepted-date"></time></p>
+      <p class="accepted-scene__plan">我们的第一件小事：<span id="first-plan">找一个不赶时间的下午，一起散步、吃饭，好好说说话。</span></p>
+    </section>
+
+    <section id="declined-scene" class="scene declined-scene" data-scene="declined" aria-labelledby="declined-title" hidden>
+      <p class="declined-scene__eyebrow">你的感受，同样重要</p>
+      <h2 id="declined-title" class="declined-scene__title">谢谢你的诚实</h2>
+      <p>谢谢你认真看完，也谢谢你诚实回应。你不需要为真实的想法道歉。我会尊重你的选择，不会让这份喜欢成为打扰。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p id="sender-signature" class="site-footer__signature">来自一个想认真对待你的人</p>
+    <p>无论你的答案是什么，这份心意都不需要你用勉强来回应。</p>
+  </footer>
+</body>
+</html>
